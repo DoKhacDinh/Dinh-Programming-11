@@ -1,11 +1,14 @@
 package com.example.schoolbook;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 
 public class HelloController {
     // Declare everything featuring on Scene Builder
@@ -39,7 +42,6 @@ public class HelloController {
         });
 
         // These codes below will allow users to interact with the program easier by resetting their List View selection when they do other tasks
-
         // Listen for mouse click events on the root container
         rootContainer.setOnMouseClicked(event -> {
             // Check if the click was not on the ListView and the ListView is not being hovered
@@ -65,7 +67,7 @@ public class HelloController {
 
         // Check whether any input fields are empty
         if (friendName.trim().isEmpty() || friendGame.trim().isEmpty() || friendAge.trim().isEmpty()) {
-            notificationLabel.setText("Please enter your friend information"); // Notify user to fill all fields
+            showTemporaryNotification("Please enter your friend information",3); // Notify user to fill all fields
             return; // Stop the program here
         }
 
@@ -76,7 +78,7 @@ public class HelloController {
             observableFriendsList.add(new Friend(friendName.trim(),age,friendGame.trim()));  // Add a new Friend object to the observable list
 
             // Notify user of successful addition and clear input fields
-            notificationLabel.setText("Friend added successfully!");
+            showTemporaryNotification("Friend added successfully!",3);
             textGetName.clear();
             textGetAge.clear();
             textGetGame.clear();
@@ -84,7 +86,7 @@ public class HelloController {
          //  Catch the invalid input ( not a number )
         } catch (NumberFormatException e) {
             // Notify user if age input is invalid (not a number) and clear age input field
-            notificationLabel.setText("Age must be a number!"); // Notify user of their mistake
+            showTemporaryNotification("Age must be a number!",3); // Notify user of their mistake
             textGetAge.clear(); // clear the age input field
         }
     }
@@ -117,12 +119,12 @@ public class HelloController {
         // If user clicked something in the ListView => selectedFriend is not null. The condition below is true
         if (selectedFriend != null) {
             observableFriendsList.remove(selectedFriend); // Remove the friend from the observable list
-            notificationLabel.setText("Friend deleted successfully!"); // Notify user of successful deletion
+            showTemporaryNotification("Friend deleted successfully!",3); // Notify user of successful deletion
             return;
 
         } else {
             // Notify user to select a friend if none is selected
-            notificationLabel.setText("Please select a friend to delete.");
+            showTemporaryNotification("Please select a friend to delete.",3);
         }
     }
 
@@ -139,6 +141,21 @@ public class HelloController {
     private void quit (MouseEvent event){
         // Terminate the program
         System.exit(0);
+    }
+
+
+    // Method executed to allow the notificationLabel to display the message for a particular duration
+    @FXML
+    private void showTemporaryNotification (String message, int durationSecs) {
+        notificationLabel.setText(message); // Set the message
+
+        // Create a Timeline to clear the notification after durationSecs (seconds)
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(durationSecs),
+                        event -> notificationLabel.setText(""))); // Clear the notification
+
+        timeline.setCycleCount(1); // Set the timeline to run only once
+        timeline.play(); // Start the timeline
     }
     }
 
