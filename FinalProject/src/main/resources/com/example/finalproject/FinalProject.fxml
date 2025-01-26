@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.HelloController">
+  <tabs>
+    <Tab fx:id="tabUserInformation" text="User Information">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="127.0" layoutY="327.0" text="Name:">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textGetName" layoutX="196.0" layoutY="330.0" promptText="Name" />
+                  <Label layoutX="418.0" layoutY="91.0" text="PERSONAL TASK MANAGEMENT">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="loginButton" layoutX="393.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#login" text="Login" />
+                  <Label fx:id="userInformationTabNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="311.0" layoutY="167.0" prefHeight="18.0" prefWidth="578.0" textAlignment="CENTER" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="tabTaskManager" disable="true" text="Task Manager">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="669.0">
+               <children>
+                  <TableView fx:id="taskTable" layoutX="31.0" layoutY="70.0" prefHeight="730.0" prefWidth="622.0">
+                    <columns>
+                      <TableColumn fx:id="taskNameColumn" prefWidth="170.3999900817871" text="Task:" />
+                      <TableColumn fx:id="durationColumn" prefWidth="199.2000274658203" text="Duration:" />
+                        <TableColumn fx:id="dueDateColumn" prefWidth="131.199951171875" text="Due Date:" />
+                        <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="121.60003662109375" text="Status:" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="701.0" layoutY="360.0" prefHeight="26.0" prefWidth="76.0" text="Task Title:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="702.0" layoutY="436.0" text="Duration:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textGetTaskTitle" layoutX="797.0" layoutY="360.0" />
+                  <Button fx:id="addButton" layoutX="764.0" layoutY="594.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="26.0" prefWidth="86.0" text="Add" />
+                  <Button fx:id="deleteButton" layoutX="893.0" layoutY="594.0" mnemonicParsing="false" onMouseClicked="#delete" prefHeight="26.0" prefWidth="86.0" text="Delete" />
+                  <Label layoutX="795.0" layoutY="282.0" text="Task Information">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="31.0" layoutY="21.0" text="User Name:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label fx:id="userNameLabel" layoutX="118.0" layoutY="21.0" text="Name">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Button fx:id="saveButton" layoutX="764.0" layoutY="664.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="26.0" prefWidth="86.0" text="Save" />
+                  <Button fx:id="loadButton" layoutX="894.0" layoutY="664.0" mnemonicParsing="false" onMouseClicked="#load" prefHeight="26.0" prefWidth="86.0" text="Load" />
+                  <Label layoutX="702.0" layoutY="513.0" text="Due Date:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dueDatePicker" layoutX="797.0" layoutY="513.0" />
+                  <Spinner fx:id="hourSpinner" layoutX="797.0" layoutY="436.0" prefHeight="34.0" prefWidth="62.0" />
+                  <Spinner fx:id="minutesSpinner" layoutX="926.0" layoutY="437.0" prefHeight="34.0" prefWidth="62.0" />
+                  <Label layoutX="807.0" layoutY="473.0" text="hours" />
+                  <Label layoutX="937.0" layoutY="473.0" text="min" />
+                  <Label fx:id="taskManagerTabNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="690.0" layoutY="217.0" prefHeight="18.0" prefWidth="362.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Button layoutX="1014.0" layoutY="800.0" mnemonicParsing="false" onMouseClicked="#close" text="Close" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab fx:id="tabSummary" disable="true" text="Summary">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="484.0" layoutY="166.0" text="General Summary">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="taskSummaryChart" layoutX="575.0" layoutY="241.0" />
+                  <HBox layoutX="93.0" layoutY="309.0" prefHeight="254.0" prefWidth="416.0">
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="193.0" prefWidth="187.0" spacing="15.0">
+                           <children>
+                              <Label text="Total Tasks:">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Completed Tasks:">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Pending Tasks:">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Overdue Tasks:">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                        <VBox prefHeight="254.0" prefWidth="30.0" />
+                        <VBox alignment="CENTER" prefHeight="263.0" prefWidth="142.0" spacing="15.0">
+                           <children>
+                              <Label fx:id="sumTotalTasks" text="0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="sumCompletedTasks" text="0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="sumPendingTasks" text="0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="sumOverDueTasks" text="0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>
