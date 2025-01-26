@@ -100,7 +100,7 @@ public class HelloController {
             }
         });
 
-        // Add a listener to handle the selection of a friend from the table ( The task that the user clicks on the table, the computer will observe and do the task below)
+        // Add a listener to handle the selection of a task from the table ( The task that the user clicks on the table, the computer will observe and do the task below)
         taskTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // These codes below will allow users to interact with the program easier by resetting their table selection when they do other things.
             // Listen for mouse click events on the tabPane (root container)

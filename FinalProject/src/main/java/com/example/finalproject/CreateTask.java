@@ -63,7 +63,7 @@ public class CreateTask {
                     // Take the string after the ',' was found to before the '.' was found to get the task's duration
                     taskDuration += taskString.substring(pos+1,j);
                     pos = j; // Set pos to be 'j'  (j is the index position where the '.' was found)
-                    break; // Stop the loop after the friend's age and game were identified
+                    break; // Stop the loop after the task's duration and game were identified
                 }
             }
 

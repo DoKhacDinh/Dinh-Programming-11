@@ -93,7 +93,7 @@ public class TaskManager {
                 FileWriter fw = new FileWriter(filePath);
                 // Wrap the FileWriter in a BufferedWriter to improve efficiency by buffering the output.
                 BufferedWriter bw = new BufferedWriter(fw);
-                // for loop to overwrite each friend to the file ( update the file with the new list of tasks after deleting )
+                // for loop to overwrite each task to the file ( update the file with the new list of tasks after deleting )
                 for (Task task : taskList) {
                     // Write all the data to the file in the logical format, so it can be accessed later
                     bw.write(task.getTaskName() + ",\r");

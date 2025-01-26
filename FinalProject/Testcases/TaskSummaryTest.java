@@ -25,7 +25,7 @@ public class TaskSummaryTest {
         taskList = FXCollections.observableArrayList(
                 new Task("Task 1", "1 hour", LocalDate.now().plusDays(1), true),  // Completed task
                 new Task("Task 2", "2 hours", LocalDate.now().minusDays(1), false), // Overdue task
-                new Task("Task 3", "3 hours", LocalDate.now().plusDays(2), false)   // Incomplete task
+                new Task("Task 3", "3 hours", LocalDate.now().plusDays(2), false)   // Pending task
         );
 
         // Initialize the TaskSummary object
@@ -44,7 +44,7 @@ public class TaskSummaryTest {
         // Verify the calculated statistics
         assertEquals(3, taskSummary.getTotalTasks());      // Total tasks should be 3
         assertEquals(1, taskSummary.getCompletedTasks());  // Completed tasks should be 1
-        assertEquals(2, taskSummary.getIncompleteTasks()); // Incomplete tasks should be 2
+        assertEquals(2, taskSummary.getIncompleteTasks()); // Pending tasks should be 2
         assertEquals(1, taskSummary.getOverdueTasks());    // Overdue tasks should be 1
     }
 
@@ -69,7 +69,7 @@ public class TaskSummaryTest {
             taskSummary.updatePieChart(pieChart);
 
             // Check the data from in the pie chart
-            assertEquals(3, pieChart.getData().size());
+            assertEquals(3, pieChart.getData().size()); // the pie chart size should be equal as 3 tasks were added
         });
     }
 
